@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-canvas: #F6F8F7;
+    --bg-elevated: #FFFFFF;
+    --bg-stone: #E9EFEA;
+    --text-primary: #102124;
+    --text-muted: #4F6367;
+    --accent-vermilion: #0F6E6E;
+    --accent-pine: #D46A3C;
+    --border-hairline: rgba(16, 33, 36, 0.10);
+    --card-shadow: 0 8px 30px -10px rgba(16, 33, 36, 0.08);
+  }
+
+  .dark {
+    --bg-canvas: #0B1517;
+    --bg-elevated: #122124;
+    --bg-stone: #192D31;
+    --text-primary: #EEF3F2;
+    --text-muted: #8FA5A8;
+    --accent-vermilion: #2FB5B0;
+    --accent-pine: #E8845A;
+    --border-hairline: rgba(238, 243, 242, 0.11);
+    --card-shadow: 0 10px 32px -10px rgba(0, 0, 0, 0.45);
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  body {
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
+    font-family: 'Manrope', system-ui, sans-serif;
+    transition: background-color 0.35s ease, color 0.35s ease;
+  }
+}
+
+/* Soft ambient dot matrix & gradient wash instead of harsh square gridlines */
+.bg-architectural-grid {
+  background-image:
+    radial-gradient(circle at 18% 20%, rgba(15, 110, 110, 0.08), transparent 45%),
+    radial-gradient(circle at 82% 75%, rgba(212, 106, 60, 0.08), transparent 45%),
+    radial-gradient(rgba(16, 33, 36, 0.09) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 28px 28px;
+}
+
+.dark .bg-architectural-grid {
+  background-image:
+    radial-gradient(circle at 18% 20%, rgba(47, 181, 176, 0.11), transparent 45%),
+    radial-gradient(circle at 82% 75%, rgba(232, 132, 90, 0.09), transparent 45%),
+    radial-gradient(rgba(238, 243, 242, 0.08) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 28px 28px;
+}
+
+.elevated-card {
+  box-shadow: var(--card-shadow);
+}
+
+/* Custom rounded scrollbars */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(79, 99, 103, 0.3);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-vermilion);
+}
+
+/* Print Stylesheet for Project Report PDF export */
+@media print {
+  body {
+    background: #FFFFFF !important;
+    color: #111111 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-full {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
