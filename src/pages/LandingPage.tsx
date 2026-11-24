@@ -59,18 +59,50 @@ const SYSTEM_SPECS = [
 export const LandingPage: React.FC<LandingPageProps> = ({ isDark }) => {
   return (
     <div className="relative">
-      {/* CLEAN EDITORIAL HERO SECTION */}
-      <section className="relative border-b border-[var(--border-hairline)] overflow-hidden">
-        {/* Subtle ambient gradient glow (clean, non-distracting) */}
+      {/* TEXTURED EDITORIAL HERO SECTION */}
+      <section className="relative border-b border-[var(--border-hairline)] overflow-hidden surface-textured">
+        {/* Subtle topographic contour lines + radial wash */}
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0"
           style={{
             background: isDark
-              ? 'radial-gradient(ellipse 70% 55% at 50% 0%, rgba(47, 181, 176, 0.12), transparent 70%)'
-              : 'radial-gradient(ellipse 70% 55% at 50% 0%, rgba(15, 110, 110, 0.08), transparent 70%)',
+              ? 'radial-gradient(ellipse 75% 60% at 50% 0%, rgba(47, 181, 176, 0.14), transparent 72%)'
+              : 'radial-gradient(ellipse 75% 60% at 50% 0%, rgba(15, 110, 110, 0.10), transparent 72%)',
           }}
         />
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 1440 520"
+          preserveAspectRatio="none"
+          className="pointer-events-none absolute inset-0 w-full h-full opacity-[0.08] dark:opacity-[0.1]"
+        >
+          <path
+            d="M-80 390 C 220 280, 480 460, 820 330 C 1100 220, 1280 340, 1520 260"
+            fill="none"
+            stroke="var(--accent-vermilion)"
+            strokeWidth="1.2"
+          />
+          <path
+            d="M-80 430 C 260 330, 520 490, 860 370 C 1140 270, 1300 390, 1520 310"
+            fill="none"
+            stroke="var(--accent-pine)"
+            strokeWidth="1.1"
+          />
+          <path
+            d="M-80 140 C 240 60, 560 190, 920 90 C 1180 20, 1340 120, 1520 70"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="0.9"
+          />
+          <path
+            d="M-80 185 C 280 100, 600 220, 950 130 C 1200 65, 1360 155, 1520 115"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="0.7"
+            strokeDasharray="6 6"
+          />
+        </svg>
 
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 sm:pt-28 sm:pb-24">
           <motion.div
@@ -79,7 +111,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ isDark }) => {
             transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
             className="text-center max-w-4xl mx-auto space-y-7"
           >
-            <div className="inline-flex items-center gap-2.5 font-mono text-xs uppercase tracking-[0.22em] text-[var(--accent-vermilion)]">
+            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-md border border-[var(--border-hairline)] bg-[var(--bg-elevated)] font-mono text-xs uppercase tracking-[0.2em] text-[var(--accent-vermilion)] elevated-card">
               <span>{PROJECT_META.portalName}</span>
               <span className="text-[var(--text-muted)]">·</span>
               <span className="text-[var(--text-muted)]">{PROJECT_META.institution}</span>
@@ -98,7 +130,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ isDark }) => {
             <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
               <NavLink
                 to="/present"
-                className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-md bg-[var(--accent-vermilion)] text-white font-semibold text-sm hover:opacity-90 transition-opacity"
+                className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-md bg-[var(--accent-vermilion)] text-white font-semibold text-sm hover:opacity-90 transition-opacity elevated-card"
               >
                 <StageIcon className="w-4 h-4" />
                 <span>Present {SLIDES.length}-Slide Deck</span>
@@ -107,7 +139,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ isDark }) => {
 
               <NavLink
                 to="/report"
-                className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-md border border-[var(--border-hairline)] bg-[var(--bg-elevated)] hover:border-[var(--text-primary)] transition-colors font-semibold text-sm"
+                className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-md border border-[var(--border-hairline)] bg-[var(--bg-elevated)] hover:border-[var(--text-primary)] transition-colors font-semibold text-sm elevated-card"
               >
                 <FolioIcon className="w-4 h-4" />
                 <span>Read Project Report</span>
@@ -116,7 +148,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ isDark }) => {
               <a
                 href={PROJECT_META.pptxDownloadUrl}
                 download="Digital_Graveyard_Final_Demo.pptx"
-                className="inline-flex items-center gap-2 px-5 py-3.5 rounded-md border border-[var(--border-hairline)] bg-[var(--bg-elevated)] hover:border-[var(--accent-vermilion)] transition-colors font-mono text-xs"
+                className="inline-flex items-center gap-2 px-5 py-3.5 rounded-md border border-[var(--border-hairline)] bg-[var(--bg-elevated)] hover:border-[var(--accent-vermilion)] transition-colors font-mono text-xs elevated-card"
               >
                 <ImportDeckIcon className="w-4 h-4" />
                 <span>Download .pptx</span>
@@ -124,20 +156,20 @@ export const LandingPage: React.FC<LandingPageProps> = ({ isDark }) => {
             </div>
           </motion.div>
 
-          {/* Clean 4-Metric Typographic Ledger */}
+          {/* Clean 4-Metric Textured Strip */}
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.12 }}
-            className="mt-16 pt-10 border-t border-[var(--border-hairline)] grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
+            className="mt-16 rounded-lg border border-[var(--border-hairline)] bg-[var(--bg-elevated)]/90 elevated-card grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-[var(--border-hairline)] text-center"
           >
-            <div>
+            <div className="p-6">
               <div className="font-serif text-4xl sm:text-5xl font-medium">22</div>
               <div className="font-mono text-[11px] uppercase tracking-widest text-[var(--text-muted)] mt-1.5">
                 Open-Licensed Graves
               </div>
             </div>
-            <div>
+            <div className="p-6">
               <div className="font-serif text-4xl sm:text-5xl font-medium text-[var(--accent-vermilion)]">
                 39 / 39
               </div>
@@ -145,7 +177,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ isDark }) => {
                 Automated Checks
               </div>
             </div>
-            <div>
+            <div className="p-6">
               <div className="font-serif text-4xl sm:text-5xl font-medium text-[var(--accent-pine)]">
                 0–100
               </div>
@@ -153,7 +185,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ isDark }) => {
                 Revival Score Engine
               </div>
             </div>
-            <div>
+            <div className="p-6">
               <div className="font-serif text-4xl sm:text-5xl font-medium">04</div>
               <div className="font-mono text-[11px] uppercase tracking-widest text-[var(--text-muted)] mt-1.5">
                 Team Rocket Engineers
@@ -184,10 +216,14 @@ export const LandingPage: React.FC<LandingPageProps> = ({ isDark }) => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {THREE_QUESTIONS.map((item) => (
+          {THREE_QUESTIONS.map((item, idx) => (
             <div
               key={item.index}
-              className="p-6 rounded-lg border border-[var(--border-hairline)] bg-[var(--bg-elevated)] flex flex-col justify-between gap-6"
+              className="p-6 rounded-lg border border-[var(--border-hairline)] bg-[var(--bg-elevated)] surface-textured elevated-card flex flex-col justify-between gap-6 border-t-2"
+              style={{
+                borderTopColor:
+                  idx === 1 ? 'var(--accent-pine)' : 'var(--accent-vermilion)',
+              }}
             >
               <div className="space-y-3">
                 <div className="flex items-center justify-between font-mono text-xs">
@@ -203,7 +239,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ isDark }) => {
       </section>
 
       {/* SECTION 02: SYSTEM SPECIFICATION & LIVE LINKS */}
-      <section className="border-y border-[var(--border-hairline)] bg-[var(--bg-elevated)]">
+      <section className="border-y border-[var(--border-hairline)] bg-[var(--bg-elevated)] surface-textured">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           <div className="lg:col-span-5 space-y-4">
             <span className="font-mono text-xs uppercase tracking-[0.18em] text-[var(--accent-pine)]">
@@ -313,11 +349,23 @@ export const LandingPage: React.FC<LandingPageProps> = ({ isDark }) => {
             to="/team"
             className="group py-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:px-3 transition-all"
           >
-            <div className="space-y-1">
+            <div className="space-y-2">
               <div className="font-mono text-xs text-[var(--text-muted)]">03 // TEAM ROCKET</div>
-              <h3 className="font-serif text-3xl font-medium group-hover:text-[var(--accent-vermilion)] transition-colors">
-                Harshita · Parth Garg · Lakshay Jain · Arshdeep Kaur
-              </h3>
+              <div className="flex flex-wrap items-center gap-4">
+                <div className="flex -space-x-2">
+                  {TEAM_MEMBERS.map((m) => (
+                    <img
+                      key={m.id}
+                      src={m.photo}
+                      alt={m.name}
+                      className="w-9 h-9 rounded-full object-cover object-top ring-2 ring-[var(--bg-canvas)]"
+                    />
+                  ))}
+                </div>
+                <h3 className="font-serif text-3xl font-medium group-hover:text-[var(--accent-vermilion)] transition-colors">
+                  Harshita · Parth Garg · Lakshay Jain · Arshdeep Kaur
+                </h3>
+              </div>
               <p className="text-sm text-[var(--text-muted)]">
                 Inspect roll numbers, GitHub profiles, and individual project dossiers.
               </p>

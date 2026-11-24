@@ -1,22 +1,51 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 interface GenerativePortraitProps {
   name: string;
   accentColor: string;
   seed: number;
+  photo?: string;
   className?: string;
 }
 
 /**
- * Fluid organic wave & circular orbital emblem for each team member.
- * Avoids boxy squares in favor of curved waves and circular medallions.
+ * Renders the teammate's uploaded photograph with clean editorial framing,
+ * falling back to a bespoke geometric emblem if an image is unavailable.
  */
 export const GenerativePortrait: React.FC<GenerativePortraitProps> = ({
   name,
   accentColor,
   seed,
-  className = 'w-full h-44',
+  photo,
+  className = 'w-full h-64',
 }) => {
+  const [imgFailed, setImgFailed] = useState(false);
+
+  if (photo && !imgFailed) {
+    return (
+      <div
+        className={`relative overflow-hidden bg-[var(--bg-stone)] border-b border-[var(--border-hairline)] ${className}`}
+      >
+        <img
+          src={photo}
+          alt={name}
+          loading="lazy"
+          onError={() => setImgFailed(true)}
+          className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+        />
+        {/* Subtle bottom edge fade & corner accent tag */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent"
+        />
+        <span
+          className="absolute bottom-3 left-3 w-2.5 h-2.5 rounded-full ring-2 ring-white/80"
+          style={{ backgroundColor: accentColor }}
+        />
+      </div>
+    );
+  }
+
   const initials = name
     .split(' ')
     .map((part) => part[0])
@@ -42,21 +71,11 @@ export const GenerativePortrait: React.FC<GenerativePortraitProps> = ({
         preserveAspectRatio="xMidYMid slice"
         aria-label={`Architectural emblem for ${name}`}
       >
-        {/* Soft flowing harmonic wave curves */}
         <path
           d={`M0 ${110 + (seed % 14)} Q 70 ${65 - waveOffset} 140 ${105} T 280 ${95 - (seed % 12)} L 280 160 L 0 160 Z`}
           fill={accentColor}
           fillOpacity="0.11"
         />
-        <path
-          d={`M0 ${125} Q 90 ${90 + waveOffset} 170 ${120} T 280 ${110}`}
-          fill="none"
-          stroke={accentColor}
-          strokeOpacity="0.32"
-          strokeWidth="1.4"
-        />
-
-        {/* Concentric orbital circles */}
         <g transform="translate(140, 80)">
           {rings.map((ring, idx) => (
             <circle
@@ -71,8 +90,6 @@ export const GenerativePortrait: React.FC<GenerativePortraitProps> = ({
               transform={`rotate(${ring.rotation})`}
             />
           ))}
-
-          {/* Smooth circular medallion */}
           <circle
             cx="0"
             cy="0"

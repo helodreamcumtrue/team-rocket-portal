@@ -44,7 +44,7 @@ const PortalShell: React.FC<{ isDark: boolean; onToggleTheme: () => void }> = ({
   }, [location.pathname, location.hash]);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="paper-grain min-h-screen flex flex-col">
       <Navbar isDark={isDark} onToggleTheme={onToggleTheme} />
 
       <main className="flex-1">

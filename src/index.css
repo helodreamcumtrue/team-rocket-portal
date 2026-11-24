@@ -4,27 +4,31 @@
 
 @layer base {
   :root {
-    --bg-canvas: #F6F8F7;
-    --bg-elevated: #FFFFFF;
-    --bg-stone: #E9EFEA;
+    --bg-canvas: #F3F6F4;
+    --bg-elevated: #FCFDFC;
+    --bg-stone: #E5ECE8;
     --text-primary: #102124;
-    --text-muted: #4F6367;
+    --text-muted: #4B5F63;
     --accent-vermilion: #0F6E6E;
     --accent-pine: #D46A3C;
-    --border-hairline: rgba(16, 33, 36, 0.10);
-    --card-shadow: 0 8px 30px -10px rgba(16, 33, 36, 0.08);
+    --border-hairline: rgba(16, 33, 36, 0.12);
+    --card-shadow:
+      0 1px 2px rgba(16, 33, 36, 0.04),
+      0 10px 28px -10px rgba(16, 33, 36, 0.10);
   }
 
   .dark {
-    --bg-canvas: #0B1517;
-    --bg-elevated: #122124;
-    --bg-stone: #192D31;
+    --bg-canvas: #0A1315;
+    --bg-elevated: #111F22;
+    --bg-stone: #17292D;
     --text-primary: #EEF3F2;
     --text-muted: #8FA5A8;
     --accent-vermilion: #2FB5B0;
     --accent-pine: #E8845A;
-    --border-hairline: rgba(238, 243, 242, 0.11);
-    --card-shadow: 0 10px 32px -10px rgba(0, 0, 0, 0.45);
+    --border-hairline: rgba(238, 243, 242, 0.12);
+    --card-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.25),
+      0 12px 32px -10px rgba(0, 0, 0, 0.5);
   }
 
   html {
@@ -36,24 +40,56 @@
     color: var(--text-primary);
     font-family: 'Manrope', system-ui, sans-serif;
     transition: background-color 0.35s ease, color 0.35s ease;
+    background-image:
+      radial-gradient(circle at 12% 10%, rgba(15, 110, 110, 0.07), transparent 38%),
+      radial-gradient(circle at 88% 28%, rgba(212, 106, 60, 0.06), transparent 40%),
+      radial-gradient(rgba(16, 33, 36, 0.075) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 24px 24px;
+  }
+
+  .dark body {
+    background-image:
+      radial-gradient(circle at 12% 10%, rgba(47, 181, 176, 0.09), transparent 40%),
+      radial-gradient(circle at 88% 28%, rgba(232, 132, 90, 0.07), transparent 42%),
+      radial-gradient(rgba(238, 243, 242, 0.06) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 24px 24px;
   }
 }
 
-/* Soft ambient dot matrix & gradient wash instead of harsh square gridlines */
-.bg-architectural-grid {
-  background-image:
-    radial-gradient(circle at 18% 20%, rgba(15, 110, 110, 0.08), transparent 45%),
-    radial-gradient(circle at 82% 75%, rgba(212, 106, 60, 0.08), transparent 45%),
-    radial-gradient(rgba(16, 33, 36, 0.09) 1px, transparent 1px);
-  background-size: 100% 100%, 100% 100%, 28px 28px;
+/* Tactile fine paper/mineral grain layer across the entire viewport */
+.paper-grain::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)'/%3E%3C/svg%3E");
 }
 
-.dark .bg-architectural-grid {
-  background-image:
-    radial-gradient(circle at 18% 20%, rgba(47, 181, 176, 0.11), transparent 45%),
-    radial-gradient(circle at 82% 75%, rgba(232, 132, 90, 0.09), transparent 45%),
-    radial-gradient(rgba(238, 243, 242, 0.08) 1px, transparent 1px);
-  background-size: 100% 100%, 100% 100%, 28px 28px;
+.dark .paper-grain::before {
+  opacity: 0.035;
+}
+
+/* Subtle diagonal woven card texture for featured sections & cards */
+.surface-textured {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(16, 33, 36, 0.018) 0px,
+    rgba(16, 33, 36, 0.018) 1px,
+    transparent 1px,
+    transparent 8px
+  );
+}
+
+.dark .surface-textured {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(238, 243, 242, 0.022) 0px,
+    rgba(238, 243, 242, 0.022) 1px,
+    transparent 1px,
+    transparent 8px
+  );
 }
 
 .elevated-card {
@@ -80,7 +116,11 @@
 @media print {
   body {
     background: #FFFFFF !important;
+    background-image: none !important;
     color: #111111 !important;
+  }
+  .paper-grain::before {
+    display: none !important;
   }
   .no-print {
     display: none !important;

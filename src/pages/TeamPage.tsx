@@ -55,7 +55,8 @@ export const TeamPage: React.FC = () => {
                 name={member.name}
                 accentColor={member.accentColor}
                 seed={member.patternSeed}
-                className="w-full h-40"
+                photo={member.photo}
+                className="w-full h-64"
               />
 
               <div className="p-6 space-y-4">
@@ -122,7 +123,8 @@ export const TeamPage: React.FC = () => {
                 name={selected.name}
                 accentColor={selected.accentColor}
                 seed={selected.patternSeed}
-                className="w-full h-40"
+                photo={selected.photo}
+                className="w-full h-64 sm:h-72"
               />
               <div className="p-6 sm:p-8 space-y-6">
                 <div className="flex items-start justify-between gap-4">

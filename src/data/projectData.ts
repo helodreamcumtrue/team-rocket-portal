@@ -9,6 +9,7 @@ export interface TeamMember {
   bio: string;
   accentColor: string;
   patternSeed: number;
+  photo?: string;
   ownership: string[];
   skills: { name: string; level: number }[];
   ledChapters: string[];
@@ -186,6 +187,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     bio: 'Maintained the Digital Graveyard repository, implemented the legal listing verification pipeline (lib/listing.js) against GitHub REST & GraphQL APIs, and oversaw continuous deployment with Vercel and Neon PostgreSQL.',
     accentColor: '#0F6E6E',
     patternSeed: 26,
+    photo: './team/harshita.jpg',
     ownership: ['Legal Listing Check', 'GitHub REST/GraphQL', 'Repo & Deployment'],
     skills: [
       { name: 'Next.js 14 / TypeScript', level: 94 },
@@ -210,6 +212,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     bio: 'Designed the relational PostgreSQL schema via Prisma ORM for graves, claims, and community commitments, built bcrypt + signed-cookie authentication, and authored the isolated test suite (scripts/test-all.js).',
     accentColor: '#D46A3C',
     patternSeed: 36,
+    photo: './team/parth.png',
     ownership: ['Prisma + Neon Postgres', 'bcrypt & Signed Sessions', '39-Check Test Suite'],
     skills: [
       { name: 'PostgreSQL / Prisma', level: 93 },
@@ -233,6 +236,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     bio: 'Developed the 5-factor Revival Score model (Freshness, Documentation, Maintenance, Community, Adoption with log scaling) and the rule-based diagnoseDecline() autopsy engine across 22 archived repositories.',
     accentColor: '#2B7A78',
     patternSeed: 43,
+    photo: './team/lakshay.jpg',
     ownership: ['Revival Score (0–100)', 'diagnoseDecline() Autopsy', 'GraphQL Yoga API'],
     skills: [
       { name: 'Scoring & Heuristics', level: 92 },
@@ -257,6 +261,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     bio: 'Led user-story requirements engineering, built reusable React 18 interface views and the suggest-a-repo flow (/api/projects/suggest), and integrated GitHub Compare API fork commit verification.',
     accentColor: '#3A5F7D',
     patternSeed: 49,
+    photo: './team/arshdeep.jpeg',
     ownership: ['React UI & User Stories', 'Suggest Repo Flow', 'Fork Verification UI'],
     skills: [
       { name: 'React 18 / CSS Systems', level: 93 },

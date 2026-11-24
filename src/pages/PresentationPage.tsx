@@ -58,9 +58,9 @@ export const PresentationPage: React.FC = () => {
   const toggleFullscreen = useCallback(async () => {
     if (!stageRef.current) return;
     if (!document.fullscreenElement) {
-      await stageRef.current.requestFullscreen().catch(() => {});
+      await stageRef.current.requestFullscreen().catch(() => { });
     } else {
-      await document.exitFullscreen().catch(() => {});
+      await document.exitFullscreen().catch(() => { });
     }
   }, []);
 
@@ -182,22 +182,20 @@ export const PresentationPage: React.FC = () => {
                 setDeckMode('original');
                 setSlideCount(SLIDES.length);
               }}
-              className={`px-3 py-1.5 rounded font-mono text-xs transition-colors ${
-                deckMode === 'original'
+              className={`px-3 py-1.5 rounded font-mono text-xs transition-colors ${deckMode === 'original'
                   ? 'bg-[var(--text-primary)] text-[var(--bg-elevated)]'
                   : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]'
-              }`}
+                }`}
             >
               Original PPTX [{SLIDES.length}]
             </button>
             <button
               type="button"
               onClick={() => setDeckMode('external')}
-              className={`px-3 py-1.5 rounded font-mono text-xs transition-colors inline-flex items-center gap-1.5 ${
-                deckMode === 'external'
+              className={`px-3 py-1.5 rounded font-mono text-xs transition-colors inline-flex items-center gap-1.5 ${deckMode === 'external'
                   ? 'bg-[var(--text-primary)] text-[var(--bg-elevated)]'
                   : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]'
-              }`}
+                }`}
             >
               <ImportDeckIcon className="w-3.5 h-3.5" />
               <span>Upload PPTX / PDF</span>
@@ -232,11 +230,10 @@ export const PresentationPage: React.FC = () => {
             type="button"
             onClick={() => setLaserEnabled((v) => !v)}
             title="Toggle Laser Pointer (L)"
-            className={`inline-flex items-center gap-1.5 px-3 py-2 rounded-md border font-mono text-xs transition-colors ${
-              laserEnabled
+            className={`inline-flex items-center gap-1.5 px-3 py-2 rounded-md border font-mono text-xs transition-colors ${laserEnabled
                 ? 'border-[var(--accent-pine)] bg-[var(--accent-pine)] text-white'
                 : 'border-[var(--border-hairline)] bg-[var(--bg-elevated)] hover:border-[var(--text-primary)]'
-            }`}
+              }`}
           >
             <ReticleIcon className="w-3.5 h-3.5" />
             <span className="hidden sm:inline">Laser</span>
@@ -248,11 +245,10 @@ export const PresentationPage: React.FC = () => {
                 type="button"
                 onClick={() => setShowNotes((v) => !v)}
                 title="Toggle Speaker Cues (N)"
-                className={`inline-flex items-center gap-1.5 px-3 py-2 rounded-md border font-mono text-xs transition-colors ${
-                  showNotes
+                className={`inline-flex items-center gap-1.5 px-3 py-2 rounded-md border font-mono text-xs transition-colors ${showNotes
                     ? 'border-[var(--text-primary)] bg-[var(--bg-stone)]'
                     : 'border-[var(--border-hairline)] bg-[var(--bg-elevated)]'
-                }`}
+                  }`}
               >
                 <CueNotesIcon className="w-3.5 h-3.5" />
                 <span className="hidden sm:inline">Cues</span>
@@ -305,11 +301,10 @@ export const PresentationPage: React.FC = () => {
           });
         }}
         onMouseLeave={() => setLaserPos((p) => ({ ...p, visible: false }))}
-        className={`relative border border-[var(--border-hairline)] bg-[var(--bg-elevated)] elevated-card overflow-hidden ${
-          isFullscreen
+        className={`relative border border-[var(--border-hairline)] bg-[var(--bg-elevated)] elevated-card overflow-hidden ${isFullscreen
             ? 'w-screen h-screen flex flex-col rounded-none'
             : 'aspect-[16/9] min-h-[420px] rounded-lg'
-        } ${laserEnabled ? 'cursor-none' : ''}`}
+          } ${laserEnabled ? 'cursor-none' : ''}`}
       >
         {/* Laser Pointer Reticle */}
         {laserEnabled && laserPos.visible && (
@@ -373,11 +368,10 @@ export const PresentationPage: React.FC = () => {
                     type="button"
                     onClick={() => goToSlide(idx)}
                     aria-label={`Go to slide ${idx + 1}`}
-                    className={`h-2 rounded-full transition-all ${
-                      idx === currentIdx
+                    className={`h-2 rounded-full transition-all ${idx === currentIdx
                         ? 'w-7 bg-[var(--accent-vermilion)]'
                         : 'w-2 bg-[var(--text-muted)]/30 hover:bg-[var(--text-muted)]'
-                    }`}
+                      }`}
                   />
                 ))}
               </div>
@@ -624,17 +618,17 @@ export const PresentationPage: React.FC = () => {
                       goToSlide(idx);
                       setShowGrid(false);
                     }}
-                    className={`text-left p-4 rounded-lg border transition-colors ${
-                      idx === currentIdx
+                    className={`text-left p-4 rounded-lg border transition-colors ${idx === currentIdx
                         ? 'border-[var(--accent-vermilion)] bg-[var(--bg-elevated)] elevated-card'
                         : 'border-[var(--border-hairline)] bg-[var(--bg-elevated)] hover:border-[var(--text-primary)]'
-                    }`}
+                      }`}
                   >
                     <div className="flex items-center justify-between font-mono text-[10px] text-[var(--text-muted)] mb-1.5">
                       <span className="text-[var(--accent-vermilion)] font-semibold">
                         SLIDE {s.number}
                       </span>
                       <span className="uppercase">Original PPTX</span>
+
                     </div>
                     <div className="font-semibold text-sm line-clamp-1">{s.title}</div>
                     <div className="text-xs text-[var(--text-muted)] line-clamp-2 mt-1">
